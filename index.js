@@ -1,9 +1,17 @@
 
-let myLeads = []
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
 const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
 
-let inputBtn = document.getElementById("input-btn")
 inputBtn.addEventListener("click", function() {
-    console.log("Button clicked from Event Listener")
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
 })
+
+function logOut() {
+    for(let i = 0; i < myLeads.length; i++) {
+        ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+    }
+}
 
