@@ -4,6 +4,8 @@ const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 
+renderLeads()
+
 inputBtn.addEventListener("click", function() {
     if (inputEl.value) {
         myLeads.push(inputEl.value)
