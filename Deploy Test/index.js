@@ -1,10 +1,15 @@
 // chrome://extensions/
-let myLeads = JSON.parse(localStorage.getItem("myLeads"))
-if (myLeads === null) myLeads = []
-
+let myLeads
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
+
+myLeads = JSON.parse(localStorage.getItem("myLeads"))
+if (myLeads === null) {
+    myLeads = []
+} else {
+    renderLeads()
+}
 
 inputBtn.addEventListener("click", function() {
     if(inputEl.value != "") {
