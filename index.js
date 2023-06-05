@@ -14,19 +14,19 @@ function init() {
     } else {
         myLeads = JSON.parse(localLeads)
     }
-    renderLeads()
+    renderList(myLeads, ulEl)
 }
 
-function renderLeads() {
+function renderList(arr, location) {
     let listItems = ""
-    for(let i = 0; i < myLeads.length; i++) {
+    for(let i = 0; i < arr.length; i++) {
         listItems += `
             <li>
-                <a target='_blank' href='${myLeads[i]}'>${myLeads[i]}</a>
+                <a target='_blank' href='${arr[i]}'>${arr[i]}</a>
             </li>
         `
     }
-    ulEl.innerHTML = listItems
+    location.innerHTML = listItems
 }
 
 inputBtn.addEventListener("click", function() {
@@ -34,12 +34,12 @@ inputBtn.addEventListener("click", function() {
         myLeads.push(inputEl.value)
         localStorage.setItem("myLeads", JSON.stringify(myLeads))
         inputEl.value = ""
-        renderLeads()
+        renderList(myLeads, ulEl)
     }
 })
 
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.removeItem("myLeads")
     myLeads = []
-    renderLeads()
+    renderList(myLeads, ulEl)
 })
