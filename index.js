@@ -20,7 +20,7 @@ function init() {
 
 function renderList(arr, location) {
     let listItems = ""
-    for(let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         listItems += `
             <li>
                 <a target='_blank' href='${arr[i]}'>${arr[i]}</a>
@@ -30,7 +30,7 @@ function renderList(arr, location) {
     location.innerHTML = listItems
 }
 
-inputBtn.addEventListener("click", function() {
+inputBtn.addEventListener("click", function () {
     if (inputEl.value) {
         myLeads.push(inputEl.value)
         localStorage.setItem("myLeads", JSON.stringify(myLeads))
@@ -39,7 +39,7 @@ inputBtn.addEventListener("click", function() {
     }
 })
 
-deleteBtn.addEventListener("dblclick", function() {
+deleteBtn.addEventListener("dblclick", function () {
     localStorage.removeItem("myLeads")
     myLeads = []
     renderList(myLeads, ulEl)
