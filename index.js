@@ -3,6 +3,7 @@ let myLeads
 const inputEl = document.getElementById("input-el")
 const inputBtn = document.getElementById("input-btn")
 const deleteBtn = document.getElementById("delete-btn")
+const saveTabBtn = document.getElementById("save-tab-btn")
 const ulEl = document.getElementById("ul-el")
 
 init()
@@ -42,4 +43,12 @@ deleteBtn.addEventListener("dblclick", function() {
     localStorage.removeItem("myLeads")
     myLeads = []
     renderList(myLeads, ulEl)
+})
+
+saveTabBtn.addEventListener("click", function () {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        renderList(myLeads, ulEl)
+    })
 })
